@@ -6,3 +6,7 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Source:  
+Build a COMPLETE React Admin Dashboard App | React, Material UI, Data Grid, Light & Dark Mode  
+from: https://www.youtube.com/watch?v=wYpCWwD1oz0&list=WL&index=10
