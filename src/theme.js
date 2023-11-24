@@ -74,9 +74,9 @@ export const tokens = (mode) => ({
             100: "#040509",
             200: "#080b12",
             300: "#0c101b",
-            400: "#f2f0f0",
-            500: "#141b2d",
-            600: "#434957",
+            400: "#eff1fb",
+            500: "#eff1fb",
+            600: "#f8f9fd",
             700: "#727681",
             800: "#a1a4ab",
             900: "#d0d1d5",
@@ -120,6 +120,7 @@ export const tokens = (mode) => ({
 // mui theme settings
 export const themeSettings = (mode) => {
     const colors = tokens(mode);
+    const fontFamily = ["Source Sans Pro", "sans-serif"].join(",");
 
     return {
         palette: {
@@ -157,30 +158,30 @@ export const themeSettings = (mode) => {
             })
         },
         typography: {
-            fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+            fontFamily,
             fontSize: 12,
             h1: {
-                fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+                fontFamily,
                 fontSize: 40,
             },
             h2: {
-                fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+                fontFamily,
                 fontSize: 32,
             },
             h3: {
-                fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+                fontFamily,
                 fontSize: 24,
             },
             h4: {
-                fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+                fontFamily,
                 fontSize: 20,
             },
             h5: {
-                fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+                fontFamily,
                 fontSize: 16,
             },
             h6: {
-                fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+                fontFamily,
                 fontSize: 14,
             },
         }
