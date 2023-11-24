@@ -10,3 +10,7 @@ Currently, two official plugins are available:
 ## Source:  
 Build a COMPLETE React Admin Dashboard App | React, Material UI, Data Grid, Light & Dark Mode  
 from: https://www.youtube.com/watch?v=wYpCWwD1oz0&list=WL&index=10
+
+## Demo:  
+
+[react-admin-edroh/](https://luchopintado.github.io/react-admin-edroh/)
