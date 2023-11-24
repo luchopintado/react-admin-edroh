@@ -67,7 +67,7 @@ const ProfileSection = ({ titleColor }) => (
                 alt="profile-user"
                 width="100px"
                 height="100px"
-                src={"../../assets/elon-musk-user.jpeg"}
+                src={"./assets/elon-musk-user.jpeg"}
                 style={{ cursor: "pointer", borderRadius: "50%" }}
             />
         </Box>
