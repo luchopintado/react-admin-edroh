@@ -98,7 +98,7 @@ const getSidebarStyles = (primaryColor) => ({
 });
 
 const menuItems = [
-    { label: "Dashboard", icon: HomeOutlinedIcon, to: "/" },
+    { label: "Dashboard", icon: HomeOutlinedIcon, to: "/dashboard" },
     { label: "Data" },
     { label: "Manage Team", icon: PeopleOutlinedIcon, to: "/team" },
     { label: "Contacts Information", icon: ContactOutlinedIcon, to: "/contacts" },
