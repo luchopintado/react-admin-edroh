@@ -4,6 +4,7 @@ import { ResponsiveChoropleth } from "@nivo/geo";
 import { tokens } from "../theme";
 import { mockGeographyData as data } from "../data/mockData";
 import { geoFeatures } from "../data/mockGeoFeatures";
+import getChartTheme from "./chartTheme";
 
 // eslint-disable-next-line react/prop-types
 const GeographyChart = ({ isDashboard = false }) => {
@@ -13,39 +14,7 @@ const GeographyChart = ({ isDashboard = false }) => {
     return (
         <ResponsiveChoropleth
             data={data}
-            theme={{
-                axis: {
-                    domain: {
-                        line: {
-                            stroke: colors.grey[100]
-                        }
-                    },
-                    legend: {
-                        text: {
-                            fill: colors.grey[100],
-                        }
-                    },
-                    ticks: {
-                        line: {
-                            stroke: colors.grey[100],
-                            strokeWidth: 1,
-                        },
-                        text: {
-                            fill: colors.grey[100],
-                        }
-                    },
-                },
-                legends: {
-                    text: {
-                        fill: colors.grey[100]
-                    }
-                },
-                tooltip: {
-                    container: {
-                        color: colors.primary[500]
-                    }
-                }
-            }}
+            theme={getChartTheme(colors)}
             features={geoFeatures.features}
             margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
             colors="nivo"

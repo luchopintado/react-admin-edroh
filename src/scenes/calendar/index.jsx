@@ -10,6 +10,29 @@ import FullCalendar from "@fullcalendar/react";
 import { tokens } from "../../theme";
 import Header from "../../components/Header";
 
+const getCustomCalendarClasses = (colors) => ({
+    ".fc-list-day-cushion": {
+        color: colors.greenAccent[200]
+    },
+    ".fc-theme-standard .fc-list-day-cushion": {
+        backgroundColor: colors.grey[800]
+    },
+    ".fc-button-primary": {
+        backgroundColor: colors.primary[900],
+        borderColor: colors.grey[800]
+    },
+    ".fc-button-primary:not(:disabled).fc-button-active": {
+        backgroundColor: colors.primary[800],
+        borderColor: colors.grey[700]
+    },
+});
+
+const initialEvents = [
+    { id: "1234", title: "Full-day event", date: "2023-11-21" },
+    { id: "1235", title: "All-day event", date: "2023-11-22" },
+    { id: "1236", title: "All-day event", date: "2023-11-23" },
+];
+
 const Calendar = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
@@ -76,22 +99,7 @@ const Calendar = () => {
                 <Box
                     flex="1 1 100%"
                     backgroundColor={colors.primary[600]}
-                    sx={{
-                        ".fc-list-day-cushion": {
-                            color: colors.greenAccent[200]
-                        },
-                        ".fc-theme-standard .fc-list-day-cushion": {
-                            backgroundColor: colors.grey[800]
-                        },
-                        ".fc-button-primary": {
-                            backgroundColor: colors.primary[900],
-                            borderColor: colors.grey[800]
-                        },
-                        ".fc-button-primary:not(:disabled).fc-button-active": {
-                            backgroundColor: colors.primary[800],
-                            borderColor: colors.grey[700]
-                        },
-                    }}
+                    sx={getCustomCalendarClasses(colors)}
                 >
                     <FullCalendar
                         height="75vh"
@@ -113,19 +121,10 @@ const Calendar = () => {
                         select={handleDateClick}
                         eventClick={handleEventClick}
                         eventsSet={(events) => setCurrentEvents(events)}
-                        initialEvents={[
-                            { id: "1234", title: "Full-day event", date: "2023-11-21" },
-                            { id: "1235", title: "All-day event", date: "2023-11-22" },
-                            { id: "1236", title: "All-day event", date: "2023-11-23" },
-                        ]}
-                    >
-
-                    </FullCalendar>
+                        initialEvents={initialEvents}
+                    />
                 </Box>
             </Box>
-            {/* <FullCalendar>
-
-            </FullCalendar> */}
         </Box>
     );
 }

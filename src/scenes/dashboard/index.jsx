@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
-import Header from "../../components/Header";
 
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import EmailIcon from "@mui/icons-material/Email";
@@ -7,11 +7,7 @@ import TrafficIcon from "@mui/icons-material/Traffic";
 import PointOfSale from "@mui/icons-material/PointOfSale";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
-/*import { DownloadOutlinedIcon } from "@mui/icons-material/DownloadOutlined";
-import { DownloadOutlinedIcon } from "@mui/icons-material/DownloadOutlined";
-import { DownloadOutlinedIcon } from "@mui/icons-material/DownloadOutlined"; */
-
-/* import { mockTransactions } from "../../data/mockData"; */
+import Header from "../../components/Header";
 import { tokens } from "../../theme";
 import StatBox from "../../components/StatBox";
 import LineChart from "../../components/LineChart";
@@ -21,6 +17,58 @@ import BarChart from "../../components/BarChart";
 import GeographyChart from "../../components/GeographyChart";
 
 
+const statData = [
+    {
+        title: "12,369",
+        subtitle: "Emails Sent",
+        progress: "0.75",
+        increase: "+14%",
+        icon: EmailIcon
+    },
+    {
+        title: "431,225",
+        subtitle: "Sales Obtained",
+        progress: "0.5",
+        increase: "+17%",
+        icon: PointOfSale,
+    },
+    {
+        title: "32,441",
+        subtitle: "New Clients",
+        progress: "0.35",
+        increase: "+5%",
+        icon: PersonAddIcon,
+    },
+    {
+        title: "1,624,361",
+        subtitle: "Traffic Inbound",
+        progress: "0.75",
+        increase: "+43%",
+        icon: TrafficIcon,
+    },
+];
+
+const DashboardHeader = ({ colors }) => (
+    <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Header title="DASHBOARD" subtitle="Welcome to your Dashboard" />
+
+        <Box>
+            <Button
+                sx={{
+                    backgroundColor: colors.blueAccent[700],
+                    color: colors.grey[100],
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    padding: "10px 20px"
+                }}
+            >
+                <DownloadOutlinedIcon sx={{ mr: "10px" }} />
+                Download Reports
+            </Button>
+        </Box>
+    </Box>
+);
+
 const Dashboard = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
@@ -28,25 +76,7 @@ const Dashboard = () => {
     return (
         <Box m="20px">
             {/* HEADER */}
-            <Box display="flex" justifyContent="space-between" alignItems="center">
-                <Header title="DASHBOARD" subtitle="Welcome to your Dashboard" />
-
-                <Box>
-                    <Button
-                        sx={{
-                            backgroundColor: colors.blueAccent[700],
-                            color: colors.grey[100],
-                            fontSize: "14px",
-                            fontWeight: "bold",
-                            padding: "10px 20px"
-                        }}
-                    >
-                        <DownloadOutlinedIcon sx={{ mr: "10px" }} />
-                        Download Reports
-                    </Button>
-                </Box>
-            </Box>
-
+            <DashboardHeader colors={colors} />
 
             {/* GRID AND CHARTS */}
             <Box
@@ -57,101 +87,37 @@ const Dashboard = () => {
                 mt="20px"
             >
                 {/* Row-1 */}
-                <Box
-                    gridColumn="span 3"
-                    backgroundColor={colors.primary[400]}
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                >
-                    <StatBox
-                        title="12,361"
-                        subtitle="Emails Sent"
-                        progress="0.75"
-                        increase="+14%"
-                        icon={
-                            <EmailIcon
-                                sx={{
-                                    color: colors.greenAccent[600],
-                                    fontSize: "26px"
-                                }}
+                {
+                    statData.map((stat, i) => (
+                        <Box
+                            key={`stat-box-${i}`}
+                            gridColumn={{ xs: "span 6", md: "span 3" }}
+                            backgroundColor={colors.primary[400]}
+                            display="flex"
+                            alignItems="center"
+                            justifyContent="center"
+                        >
+                            <StatBox
+                                title={stat.title}
+                                subtitle={stat.subtitle}
+                                progress={stat.progress}
+                                increase={stat.increase}
+                                icon={
+                                    <stat.icon
+                                        sx={{
+                                            color: colors.greenAccent[600],
+                                            fontSize: "26px"
+                                        }}
+                                    ></stat.icon>
+                                }
                             />
-                        }
-                    />
-                </Box>
-
-                <Box
-                    gridColumn="span 3"
-                    backgroundColor={colors.primary[400]}
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                >
-                    <StatBox
-                        title="431,225"
-                        subtitle="Sales Obtained"
-                        progress="0.5"
-                        increase="+17%"
-                        icon={
-                            <PointOfSale
-                                sx={{
-                                    color: colors.greenAccent[600],
-                                    fontSize: "26px"
-                                }}
-                            />
-                        }
-                    />
-                </Box>
-
-                <Box
-                    gridColumn="span 3"
-                    backgroundColor={colors.primary[400]}
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                >
-                    <StatBox
-                        title="32,441"
-                        subtitle="New Clients"
-                        progress="0.35"
-                        increase="+5%"
-                        icon={
-                            <PersonAddIcon
-                                sx={{
-                                    color: colors.greenAccent[600],
-                                    fontSize: "26px"
-                                }}
-                            />
-                        }
-                    />
-                </Box>
-
-                <Box
-                    gridColumn="span 3"
-                    backgroundColor={colors.primary[400]}
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                >
-                    <StatBox
-                        title="1,624,361"
-                        subtitle="Traffic Inbound"
-                        progress="0.75"
-                        increase="+43%"
-                        icon={
-                            <TrafficIcon
-                                sx={{
-                                    color: colors.greenAccent[600],
-                                    fontSize: "26px"
-                                }}
-                            />
-                        }
-                    />
-                </Box>
+                        </Box>
+                    ))
+                }
 
                 {/* Row-2 */}
                 <Box
-                    gridColumn="span 8"
+                    gridColumn={{ xs: "span 12", md: "span 8" }}
                     gridRow="span 2"
                     backgroundColor={colors.primary[400]}
                 >
@@ -187,7 +153,8 @@ const Dashboard = () => {
                 </Box>
 
                 <Box
-                    gridColumn="span 4"
+                    gridColumn={{ xs: "span 12", md: "span 4" }}
+                    // gridColumn="span 4"
                     gridRow="span 2"
                     backgroundColor={colors.primary[400]}
                     overflow="auto"
@@ -248,7 +215,7 @@ const Dashboard = () => {
 
                 {/* ROW 3 */}
                 <Box
-                    gridColumn="span 4"
+                    gridColumn={{ xs: "span 12", md: "span 4" }}
                     gridRow="span 2"
                     backgroundColor={colors.primary[400]}
                     p="30px"
@@ -275,7 +242,7 @@ const Dashboard = () => {
                 </Box>
 
                 <Box
-                    gridColumn="span 4"
+                    gridColumn={{ xs: "span 12", md: "span 4" }}
                     gridRow="span 2"
                     backgroundColor={colors.primary[400]}
                 >
@@ -288,7 +255,7 @@ const Dashboard = () => {
                 </Box>
 
                 <Box
-                    gridColumn="span 4"
+                    gridColumn={{ xs: "span 12", md: "span 4" }}
                     gridRow="span 2"
                     backgroundColor={colors.primary[400]}
                     padding="30px"

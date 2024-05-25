@@ -3,6 +3,7 @@ import { ResponsiveBar } from "@nivo/bar";
 
 import { tokens } from "../theme";
 import { mockBarData as data } from "../data/mockData";
+import getChartTheme from "./chartTheme";
 
 // eslint-disable-next-line react/prop-types
 const BarChart = ({ isDashboard = false }) => {
@@ -12,39 +13,7 @@ const BarChart = ({ isDashboard = false }) => {
     return (
         <ResponsiveBar
             data={data}
-            theme={{
-                axis: {
-                    domain: {
-                        line: {
-                            stroke: colors.grey[100],
-                        }
-                    },
-                    legend: {
-                        text: {
-                            fill: colors.grey[100],
-                        }
-                    },
-                    ticks: {
-                        line: {
-                            stroke: colors.grey[100],
-                            strokeWidth: 1,
-                        },
-                        text: {
-                            fill: colors.grey[100],
-                        }
-                    },
-                },
-                legends: {
-                    text: {
-                        fill: colors.grey[100],
-                    }
-                },
-                tooltip: {
-                    container: {
-                        color: colors.primary[500]
-                    }
-                }
-            }}
+            theme={getChartTheme(colors)}
             keys={[
                 'hot dog',
                 'burger',

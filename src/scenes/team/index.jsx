@@ -8,58 +8,49 @@ import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import { mockDataTeam } from "../../data/mockData";
 import Header from "../../components/Header";
 import { tokens } from "../../theme";
+import getDataGridStyles from "../global/styles";
+
+const columns = [
+    {field: "id", headerName: "ID" },
+    {field: "name", headerName: "Name", flex: 1, cellClassName: "name-column--cell" },
+    {field: "age", headerName: "Age", type: "number", headerAlign: "left", align: "left" },
+    {field: "phone", headerName: "Phone Number", flex: 1 },
+    {field: "email", headerName: "Email", flex: 1 },
+    {field: "access", headerName: "Access Level", flex: 1, headerAlign: "center" },
+];
+
+const RoleIconComponent = {
+    admin: AdminPanelSettingsOutlinedIcon,
+    manager: SecurityOutlinedIcon,
+    user: LockOpenOutlinedIcon
+};
 
 const Team = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    const renderCell = ({ row }) => (
-        <Box
-            width="60%"
-            m="0 auto"
-            p="5px"
-            display="flex"
-            justifyContent="center"
-            borderRadius="4px"
-            backgroundColor={colors.greenAccent[row.access === "admin" ? 600 : 700]}
-        >
-            { row.access === "admin" && <AdminPanelSettingsOutlinedIcon /> }
-            { row.access === "manager" && <SecurityOutlinedIcon /> }
-            { row.access === "user" && <LockOpenOutlinedIcon /> }
-            <Typography ml="4px">
-                { row.access }
-            </Typography>
-        </Box>
-    );
-    const columns = [
-        {field: "id", headerName: "ID" },
-        {field: "name", headerName: "Name", flex: 1, cellClassName: "name-column--cell" },
-        {field: "age", headerName: "Age", type: "number", headerAlign: "left", align: "left" },
-        {field: "phone", headerName: "Phone Number", flex: 1 },
-        {field: "email", headerName: "Email", flex: 1 },
-        {field: "access", headerName: "Access Level", flex: 1, headerAlign: "center", renderCell },
-    ];
+    const dataGridStyles = getDataGridStyles(colors);
 
-    const dataGridStyles = {
-        "& .MuiDataGrid-root": {
-            border: "none"
-        },
-        "& .MuiDataGrid-cell": {
-            borderBottom: "none"
-        },
-        "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colors.blueAccent[700]
-        },
-        "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: colors.primary[500]
-        },
-        "& .MuiDataGrid-footerContainer": {
-            borderTop: "none",
-            backgroundColor: colors.blueAccent[700]
-        },
-        "& .name-column--cell": {
-            color: colors.greenAccent[300]
-        },
+    const renderCell = ({ row }) => {
+        const IconComponent = RoleIconComponent[row.access];
+        const boxProps = {
+            width: "60%",
+            m: "0 auto",
+            p: "5px",
+            display: "flex",
+            justifyContent: "center",
+            borderRadius: "4px",
+            backgroundColor: colors.greenAccent[row.access === "admin" ? 600 : 700],
+        };
+        return (
+            <Box {...boxProps} >
+                <IconComponent />
+                <Typography ml="4px">
+                    { row.access }
+                </Typography>
+            </Box>
+        );
     };
+    columns[5].renderCell = renderCell;
 
     return (
         <Box m="20px">
