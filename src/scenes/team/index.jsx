@@ -12,9 +12,9 @@ import getDataGridStyles from "../global/styles";
 
 const columns = [
     {field: "id", headerName: "ID" },
-    {field: "name", headerName: "Name", flex: 1, cellClassName: "name-column--cell" },
-    {field: "age", headerName: "Age", type: "number", headerAlign: "left", align: "left" },
-    {field: "phone", headerName: "Phone Number", flex: 1 },
+    {field: "name", headerName: "Nombre", flex: 1, cellClassName: "name-column--cell" },
+    {field: "age", headerName: "Contacto", type: "number", headerAlign: "left", align: "left" },
+    {field: "phone", headerName: "", flex: 1 },
     {field: "email", headerName: "Email", flex: 1 },
     {field: "access", headerName: "Access Level", flex: 1, headerAlign: "center" },
 ];
@@ -54,7 +54,7 @@ const Team = () => {
 
     return (
         <Box m="20px">
-            <Header title="TEAM" subtitle="Managing the Team Members" />
+            <Header title="Clientes" subtitle="Administrar los clientes" />
             <Box mt="20px" sx={dataGridStyles}>
                 <DataGrid
                     rows={mockDataTeam}

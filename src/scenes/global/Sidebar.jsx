@@ -14,9 +14,9 @@ import PersonOutlinedIcon from '@mui/icons-material/PersonOutline';
 import CalendarTodayOutlined from "@mui/icons-material/CalendarTodayOutlined";
 import HelpOutlinedIcon from '@mui/icons-material/HelpOutlined';
 import BarCharOutlinedIcon from '@mui/icons-material/BarChartOutlined';
-import PieChartOutlinedIcon from '@mui/icons-material/PieChartOutlined';
-import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
-import MapOutLinedIcon from '@mui/icons-material/MapOutlined'
+// import PieChartOutlinedIcon from '@mui/icons-material/PieChartOutlined';
+// import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
+// import MapOutLinedIcon from '@mui/icons-material/MapOutlined'
 
 import "react-pro-sidebar/dist/css/styles.css";
 
@@ -50,7 +50,7 @@ const MenuHeader = ({ isCollapsed, setIsCollapsed, color }) => (
         {!isCollapsed && (
             <Box display="flex" justifyContent="space-between" alignItems="center" ml="15">
                 <Typography variant="h3" color={color}>
-                    ADMINIS
+                    Centra.
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                     <MenuOutlinedIcon />
@@ -73,8 +73,8 @@ const ProfileSection = ({ titleColor }) => (
         </Box>
 
         <Box textAlign="center">
-            <Typography variant="h2" color={titleColor} fontWeight="bold" sx={{ m: "10px 0 0 0" }}>React Dev</Typography>
-            <Typography>VP Fancy Admin</Typography>
+            <Typography variant="h2" color={titleColor} fontWeight="bold" sx={{ m: "10px 0 0 0" }}>Jason Toro</Typography>
+            <Typography>Insurance Broker</Typography>
         </Box>
     </Box>
 );
@@ -99,19 +99,19 @@ const getSidebarStyles = (primaryColor) => ({
 
 const menuItems = [
     { label: "Dashboard", icon: HomeOutlinedIcon, to: "/dashboard" },
-    { label: "Data" },
-    { label: "Manage Team", icon: PeopleOutlinedIcon, to: "/team" },
-    { label: "Contacts Information", icon: ContactOutlinedIcon, to: "/contacts" },
-    { label: "Invoices Balances", icon: ReceiptOutlinedIcon, to: "/invoices" },
-    { label: "Pages" },
-    { label: "Profile Form", icon: PersonOutlinedIcon, to: "/form" },
-    { label: "Calendar", icon: CalendarTodayOutlined, to: "/calendar" },
-    { label: "FAQ Page", icon: HelpOutlinedIcon, to: "/faq" },
-    { label: "Charts" },
-    { label: "Bar Chart", icon: BarCharOutlinedIcon, to: "/bar" },
-    { label: "Pie Chart", icon: PieChartOutlinedIcon, to: "/pie" },
-    { label: "Line Chart", icon: TimelineOutlinedIcon, to: "/line" },
-    { label: "Geography Chart", icon: MapOutLinedIcon, to: "/geography" },
+    { label: "" },
+    { label: "Clientes", icon: PeopleOutlinedIcon, to: "/clientes" },
+    { label: "Activos", icon: ContactOutlinedIcon, to: "/contacts" },
+    { label: "Polizas", icon: ReceiptOutlinedIcon, to: "/polizas" },
+    { label: "Siniestros", icon: PersonOutlinedIcon, to: "/form" },
+    { label: "" },
+    { label: "Usuarios", icon: CalendarTodayOutlined, to: "/calendar" },
+    { label: "Aseguradoras", icon: HelpOutlinedIcon, to: "/faq" },
+    { label: "Configuracion", icon: BarCharOutlinedIcon, to: "/bar" },
+    // { label: "Charts" },
+    // { label: "Pie Chart", icon: PieChartOutlinedIcon, to: "/pie" },
+    // { label: "Line Chart", icon: TimelineOutlinedIcon, to: "/line" },
+    // { label: "Geography Chart", icon: MapOutLinedIcon, to: "/geography" },
 ];
 
 const CustomSidebar = () => {
@@ -130,10 +130,10 @@ const CustomSidebar = () => {
 
                     <Box paddingLeft={isCollapsed ? undefined : "10%"}>
                     {
-                        menuItems.map(menuItem => {
+                        menuItems.map((menuItem, idx) => {
                             if (menuItem.to) {
                                 return <Item
-                                    key={`mitem-${menuItem.label}`}
+                                    key={`mitem-${menuItem.label || idx}`}
                                     title={menuItem.label}
                                     to={menuItem.to}
                                     icon={<menuItem.icon />}
@@ -143,7 +143,7 @@ const CustomSidebar = () => {
                             } else {
                                 return (
                                     <Typography
-                                        key={`mitem-${menuItem.label}`}
+                                        key={`mitem-t-${menuItem.label || idx}`}
                                         variant="h6"
                                         color={colors.grey[300]} sx={{ m: "15px 0 5px 20px" }}
                                     >

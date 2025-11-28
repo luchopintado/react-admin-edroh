@@ -20,28 +20,28 @@ import GeographyChart from "../../components/GeographyChart";
 const statData = [
     {
         title: "12,369",
-        subtitle: "Emails Sent",
+        subtitle: "Polizas totales",
         progress: "0.75",
         increase: "+14%",
         icon: EmailIcon
     },
     {
         title: "431,225",
-        subtitle: "Sales Obtained",
+        subtitle: "Produccion del mes",
         progress: "0.5",
         increase: "+17%",
         icon: PointOfSale,
     },
     {
         title: "32,441",
-        subtitle: "New Clients",
+        subtitle: "Nuevos clientes",
         progress: "0.35",
         increase: "+5%",
         icon: PersonAddIcon,
     },
     {
         title: "1,624,361",
-        subtitle: "Traffic Inbound",
+        subtitle: "Activos totales",
         progress: "0.75",
         increase: "+43%",
         icon: TrafficIcon,
@@ -63,7 +63,7 @@ const DashboardHeader = ({ colors }) => (
                 }}
             >
                 <DownloadOutlinedIcon sx={{ mr: "10px" }} />
-                Download Reports
+                Descargar Reporte
             </Button>
         </Box>
     </Box>
@@ -176,7 +176,7 @@ const Dashboard = () => {
                             variant="h5"
                             fontWeight="600"
                         >
-                            Recent Transactions
+                            Transactiones recientes
                         </Typography>
                     </Box>
                     {mockTransactions.map((transaction, idx) => (
@@ -221,7 +221,7 @@ const Dashboard = () => {
                     p="30px"
                 >
                     <Typography variant="h5" fontWeight="600">
-                        Campaign
+                        Campaña
                     </Typography>
                     <Box
                         display="flex"
@@ -247,7 +247,7 @@ const Dashboard = () => {
                     backgroundColor={colors.primary[400]}
                 >
                     <Typography variant="h5" fontWeight="600" sx={{ padding: "30px 30px 0 30px" }}>
-                        Sales Quantity
+                        Cantidad de ventas
                     </Typography>
                     <Box height="250px" mt="-20px">
                         <BarChart isDashboard={true} />
